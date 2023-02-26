@@ -66,7 +66,7 @@ export default [
     {
         id: 841,
         brand: "Lagunitas IPA",
-        image: "/products/lagunitas.jpg",
+        image: "/products/budweiser.jpg",
         style: "Ale",
         substyle: "Indian Pale Ale",
         abv: "6.2%",

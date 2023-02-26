@@ -1,4 +1,12 @@
+import stockPrice from "@/data/stock-price";
+
+
 export async function GET(request, { params }) {
     const sku = params.sku;
-    return new Response(sku)
+    const foundStockPrice = stockPrice[sku]
+    if (foundStockPrice) {
+        console.log(foundStockPrice)
+        return Response.json(foundStockPrice)
+    }
+    return new Response ('Product does not exist');
 }
