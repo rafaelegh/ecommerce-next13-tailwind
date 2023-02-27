@@ -10,7 +10,6 @@ const Search = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(e);
     if (keyword) {
       router.push(`/?keyword=${keyword}`);
     } else {
