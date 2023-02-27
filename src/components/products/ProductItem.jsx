@@ -36,18 +36,6 @@ const ProductItem = ({ product }) => {
                         >
                             {product.brand}
                         </Link>
-                        <div className="flex flex-wrap items-center space-x-2 mb-2">
-                            <div className="ratings">
-                                <div className="my-1">
-
-                                </div>
-                            </div>
-                            <b className="text-gray-300">•</b>
-                            <span className="ml-1 text-yellow-500"></span>
-                        </div>
-                        <p className="text-gray-500 mb-2">
-                            {product?.information.substring(0, 150)}...
-                        </p>
                     </div>
                 </div>
             </div>

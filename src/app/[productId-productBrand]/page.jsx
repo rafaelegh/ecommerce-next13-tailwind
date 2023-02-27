@@ -1,18 +1,16 @@
 import ProductDetails from "@/components/products/ProductDetails";
-import axios from "axios";
 
 const getProduct = async (productId) => {
-    const {data} = await axios.get('http://localhost:3000/api/products');
+    const data = await fetch('http://localhost:3000/api/products');
+    const products = await data.json();
     const fixedProductId = Number(productId);
-    const foundProduct = data.find(product => product.id === fixedProductId);
+    const foundProduct = products.find(product => product.id === fixedProductId);
     return foundProduct;
 }; 
 
 const DetailsProductPage = async ({params}) => {
 
-    console.log(params);
-    const [productId, productBrand] = params['productId-productBrand']?.split("-");
-    console.log(productId, productBrand)
+    const [productId] = params['productId-productBrand']?.split("-");
     const product = await getProduct(productId);
     return <ProductDetails product={product} /> 
 };
