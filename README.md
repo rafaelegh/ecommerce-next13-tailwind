@@ -12,8 +12,8 @@ npm run dev
 ```
 
 Routes: 
-  /                         : Product list page
-  /[productID-productBrand] : Product detail page
+  - /                         : Product list page
+  - /[productID-productBrand] : Product detail page
   
   - Product detail page updates every 5 seconds
   - search bar for products
