@@ -11,7 +11,6 @@ const ProductsListing = ({ data }) => {
 
                     <main className="md:w-2/3 lg:w-3/4 px-3">
                         {data?.map((brand) => {
-                            console.log(brand)
                             return brand.skus?.map(product => 
                                 <ProductItem key={product.code} brand={brand} name={product.name} />    
                             )
