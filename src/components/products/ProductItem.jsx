@@ -7,9 +7,9 @@ const ProductItem = ({ product }) => {
     const fixedBrandName = product.brand.toLowerCase().split(" ").join("-");
 
     return (
-        <article className="border border-gray-200 overflow-hidden bg-white shadow-sm rounded mb-5 flex-1 mr-8">
+        <article className="border border-gray-200 overflow-hidden bg-white shadow-sm rounded mb-5 mr-8 w-1/4">
             <div className="flex flex-col items-center">
-                <div className="md:w-1/4 flex justify-center mt-4">
+                <div className="flex mt-4">
                     <div
                         style={{
                             width: "75px",

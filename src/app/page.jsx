@@ -6,12 +6,18 @@ const getProducts = async () => {
   return res.json();
 };
 
-const HomePage = async () => {
+const search = (data, searchParams) => {
+  const keyword = searchParams?.keyword;
+  const filteredData = keyword ? data.filter(product => product.brand.toLowerCase().includes(keyword)) : data;
+  return filteredData ? filteredData : data;
+}
 
+const HomePage = async ({searchParams}) => {
   const data = await getProducts();
-  console.log(data[4]);
+
+  const searchedData = search(data, searchParams);
   
-  return <ProductsListing data={data} />
+  return <ProductsListing data={searchedData} />
 };
 
 export default HomePage;

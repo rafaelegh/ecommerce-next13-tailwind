@@ -10,7 +10,7 @@ const ProductsListing = ({ data }) => {
             <h2 className="text-4xl font-bold mb-4">Products: </h2>
                 <div className=" -mx-4">
 
-                    <main className="px-3 drop-shadow-lg flex justify-center">
+                    <main className="px-3 drop-shadow-lg flex justify-start">
                         {data?.map((product) => 
                             <ProductItem key={product.id} product={product} />    
                         )}

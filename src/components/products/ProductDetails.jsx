@@ -63,7 +63,7 @@ const ProductDetails = ({ product }) => {
                             <p><b>Origin: </b>{product?.origin}</p>
                             <div className="flex">
                                 <p className="font-bold mr-4">Size: </p>
-                                <select className="border border-grey1 w-1/3 rounded-md bg-white1" name="" id="" onChange={handleOnChange}>
+                                <select className="border border-grey1 w-1/2 rounded-md bg-white1" name="" id="" onChange={handleOnChange}>
                                     {
                                         product?.skus?.map(sku => {
                                             return <option key={sku.code} value={sku.code}>{sku.name}</option>
