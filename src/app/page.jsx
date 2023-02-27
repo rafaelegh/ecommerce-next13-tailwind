@@ -1,7 +1,6 @@
 import axios from "axios";
 import React from "react";
 import ProductsListing from "../components/products/ProductsListing";
-import './globals.css'
 
 const getProducts = async () => {
   const { data } = await axios.get('http://localhost:3000/api/products');

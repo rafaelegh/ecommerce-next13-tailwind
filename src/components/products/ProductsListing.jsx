@@ -10,11 +10,9 @@ const ProductsListing = ({ data }) => {
                 <div className="flex flex-col md:flex-row -mx-4">
 
                     <main className="md:w-2/3 lg:w-3/4 px-3">
-                        {data?.map((brand) => {
-                            return brand.skus?.map(product => 
-                                <ProductItem key={product.code} brand={brand} name={product.name} />    
-                            )
-                        })}
+                        {data?.map((product) => 
+                            <ProductItem key={product.id} product={product} />    
+                        )}
                     </main>
                 </div>
             </div>
