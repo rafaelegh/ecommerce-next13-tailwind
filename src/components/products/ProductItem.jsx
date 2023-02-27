@@ -7,9 +7,9 @@ const ProductItem = ({ product }) => {
     const fixedBrandName = product.brand.toLowerCase().split(" ").join("-");
 
     return (
-        <article className="border border-gray-200 overflow-hidden bg-white shadow-sm rounded mb-5">
-            <div className="flex flex-col justify-center md:flex-row">
-                <div className="md:w-1/4 flex p-3 justify-center">
+        <article className="border border-gray-200 overflow-hidden bg-white shadow-sm rounded mb-5 flex-1 mr-8">
+            <div className="flex flex-col items-center">
+                <div className="md:w-1/4 flex justify-center mt-4">
                     <div
                         style={{
                             width: "75px",
@@ -23,16 +23,17 @@ const ProductItem = ({ product }) => {
                                     ? `/images${product?.image}`
                                     : "/images/default_product.png"
                             }
+                            className="object-contain"
                             alt="product anme"
                             fill
                         />
                     </div>
                 </div>
-                <div className="md:w-2/4">
+                <div className="flex justify-center items-center mb-4">
                     <div className="p-4">
                         <Link
                             href={`/${product.id}-${fixedBrandName}`}
-                            className="hover:text-blue-600"
+                            className="bg-red1 py-3 px-4 text-white rounded-xl hover:bg-red-500 capitalize font-extrabold"
                         >
                             {product.brand}
                         </Link>

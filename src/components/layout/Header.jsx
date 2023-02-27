@@ -11,7 +11,7 @@ const Header = () => {
           <div className="flex-shrink-0 mr-5">
             <a href="/">
               <Image
-                src="/images/logo.png"
+                src="/images/logo2.png"
                 height="40"
                 width="120"
                 alt="BuyItNow"
@@ -22,7 +22,7 @@ const Header = () => {
 
           <div className="flex items-center space-x-2 ml-auto">
             <Link
-              href="/cart"
+              href="/"
               className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
             >
               <i className="text-gray-400 w-5 fa fa-shopping-cart"></i>
@@ -31,13 +31,13 @@ const Header = () => {
               </span>
             </Link>
             <Link
-              href="/login"
+              href="/"
               className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
             >
               <i className="text-gray-400 w-5 fa fa-user"></i>
               <span className="hidden lg:inline ml-1">Sign in</span>
             </Link>
-            <Link href="/me">
+            <Link href="/">
               <div className="flex items-center mb-4 space-x-3 mt-4 cursor-pointer">
                 <img
                   className="w-10 h-10 rounded-full"
@@ -45,7 +45,7 @@ const Header = () => {
                 />
                 <div className="space-y-1 font-medium">
                   <p>
-                    Ghulam
+                    Rafael
                     <time className="block text-sm text-gray-500 dark:text-gray-400">
                       test@gmail.com
                     </time>

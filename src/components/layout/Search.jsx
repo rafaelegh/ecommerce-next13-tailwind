@@ -11,7 +11,7 @@ const Search = () => {
       />
       <button
         type="button"
-        className="px-4 py-2 inline-block text-white border border-transparent bg-blue-600 rounded-md hover:bg-blue-700"
+        className="px-4 py-2 inline-block text-white border border-transparent bg-red1 rounded-md hover:bg-red-500"
       >
         Search
       </button>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 import useSWR from 'swr'
 
@@ -33,19 +34,23 @@ const ProductDetails = ({ product }) => {
             <section className="bg-white py-10">
                 <div className="container max-w-screen-xl mx-auto px-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-5">
-                        <aside>
-                            <div className="border border-gray-200 shadow-sm p-3 text-center rounded mb-5">
-                                <img
+                        <aside className="flex justify-center">
+                            <div className="border relative border-gray-200 shadow-sm p-3 text-center rounded mb-5"
+                                style={{
+                                    width: 300,
+                                    height: 500
+                                }}                            
+                            >
+                                <Image
                                     ref={imgRef}
-                                    className="object-cover inline-block"
+                                    className="object-contain inline-block"
                                     src={
                                         product?.image
                                             ? `/images${product?.image}`
                                             : "/images/default_product.png"
                                     }
                                     alt="Product title"
-                                    width="340"
-                                    height="340"
+                                    fill
                                 />
                             </div>
                         </aside>
@@ -58,7 +63,7 @@ const ProductDetails = ({ product }) => {
                             <p><b>Origin: </b>{product?.origin}</p>
                             <div className="flex">
                                 <p className="font-bold mr-4">Size: </p>
-                                <select className="text-red" name="" id="" onChange={handleOnChange}>
+                                <select className="border border-grey1 w-1/3 rounded-md bg-white1" name="" id="" onChange={handleOnChange}>
                                     {
                                         product?.skus?.map(sku => {
                                             return <option key={sku.code} value={sku.code}>{sku.name}</option>
@@ -72,7 +77,7 @@ const ProductDetails = ({ product }) => {
 
                             <div className="flex flex-wrap items-center gap-2 mb-5">
                                 <p className="font-semibold text-3xl mr-4"> ${fixedPrice}</p>
-                                <button className="px-4 py-2 inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700">
+                                <button className="px-4 py-2 inline-block text-white bg-red1 border border-transparent rounded-md hover:bg-red-500">
                                     <i className="fa fa-shopping-cart mr-2"></i>
                                     Add to cart
                                 </button>
