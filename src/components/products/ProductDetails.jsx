@@ -1,48 +1,32 @@
 "use client";
 
-import axios from "axios";
-import React, { useRef } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+function useStockPrice(sku) {
+    const { data, error, isLoading } = useSWR(`/api/stock-price/${sku}`, fetcher, { refreshInterval: 5000 })
+
+    return {
+        stockPrice: data,
+        isLoading,
+        isError: error
+    }
+}
 
 const ProductDetails = ({ product }) => {
     
-    const [sku, setSku] = useState('');
-    const [stockPrice, setStockPrice] = useState({});
+    const [sku, setSku] = React.useState(product.skus[0].code);
+    const { stockPrice, isLoading, isError } = useStockPrice(sku);
 
-    const imgRef = useRef(null);
-
-    const setImgPreview = (url) => {
-        imgRef.current.src = url;
-    };
-
-    const inStock = stockPrice?.stock >= 1;
-    //const [sku, setSku] = useState(product.sku[0]?.code);
-    console.log('stock: ', stockPrice);
-    console.log('sku: ', sku);
+    const imgRef = React.useRef(null);
 
     const handleOnChange = (e) => {
-        console.log(e.target.value);
         setSku(e.target.value);
     }
-    const fixedPrice = stockPrice ? `${Math.trunc(stockPrice.price/100)},${stockPrice.price%100}` : '';
-
-
-
-    useEffect(() => {
-        const getStockPrice = async (sku) => {
-            const {data}  = await axios.get(`http://localhost:3000/api/stock-price/${sku}`);
-            setStockPrice(data);
-        }
-        console.log('product: ', product)
-
-        if(product) {
-            const code = sku ? sku : product.skus[0].code;
-            getStockPrice(code);
-        }
-    }, [product, sku])
-
-    console.log(stockPrice);
+    const fixedPrice = stockPrice?.price ? `${Math.trunc(stockPrice.price/100)},${stockPrice.price%100}` : '';
+    const inStock = stockPrice?.stock >= 1;
 
     return (
         <>
@@ -63,22 +47,6 @@ const ProductDetails = ({ product }) => {
                                     width="340"
                                     height="340"
                                 />
-                            </div>
-                            <div className="space-x-2 overflow-auto text-center whitespace-nowrap">
-                                {product?.images?.map((img) => (
-                                    <a
-                                        className="inline-block border border-gray-200 p-1 rounded-md hover:border-blue-500 cursor-pointer"
-                                        onClick={() => setImgPreview(img?.url)}
-                                    >
-                                        <img
-                                            className="w-14 h-14"
-                                            src={img.url}
-                                            alt="Product title"
-                                            width="500"
-                                            height="500"
-                                        />
-                                    </a>
-                                ))}
                             </div>
                         </aside>
                         <main>
@@ -113,12 +81,12 @@ const ProductDetails = ({ product }) => {
                             <ul className="mb-5">
                                 <li className="mb-1">
                                     {" "}
-                                    <b className="font-medium inline-block mr-4">Stock: {stockPrice.stock}</b>
-                                    {inStock ? (
+                                    <b className="font-medium inline-block mr-4">Stock: {stockPrice?.stock}</b>
+                                    {stockPrice?.stock && (inStock ? (
                                         <span className="text-green-500">In Stock</span>
                                     ) : (
                                         <span className="text-red-500">Out of Stock</span>
-                                    )}
+                                    ))}
                                 </li>
                             </ul>
                         </main>
